@@ -1,0 +1,23 @@
+name: Release
+
+on:
+  release:
+    tpes: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+          registry-url: 'https://npm.pkg.github.com'
+      - name: Install
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: Publish
+        run: npm version --no-git-tag-version ${GITHUB_REF#"refs/tags/"}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
