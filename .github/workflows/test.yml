@@ -6,13 +6,21 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    services:
+      elasticsearch:
+        image: docker.elastic.co/elasticsearch/elasticsearch:7.4.2
+        ports:
+          - 9200:9200
+        environment:
+          - discovery.type=single-node
+    env:
+      ELASTICSEARCH_URI: http://localhost:9200
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
           node-version: '10.x'
       - name: Install
-        run: npm install
+        run: npm ci
       - name: Test
         run: npm run test
