@@ -1,0 +1,35 @@
+{
+  "name": "@lastcall/elasticsearch-migrate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@elastic/elasticsearch": "^7.5.0",
+    "@types/glob": "^7.1.1",
+    "@types/jest": "^24.0.24",
+    "@types/node": "^13.1.0",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.2.0",
+    "typescript": "^3.7.4"
+  },
+  "peerDependencies": {
+    "@elastic/elasticsearch": "^7.5.0"
+  },
+  "jest": {
+    "preset": "ts-jest/presets/default",
+    "roots": [
+      "<rootDir>/src"
+    ]
+  },
+  "dependencies": {
+    "glob": "^7.1.6",
+    "yargs": "^15.0.2"
+  }
+}
