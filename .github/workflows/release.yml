@@ -2,7 +2,7 @@ name: Release
 
 on:
   release:
-    tpes: [published]
+    types: [published]
 
 jobs:
   publish:
