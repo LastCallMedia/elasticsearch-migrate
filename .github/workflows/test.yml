@@ -4,7 +4,18 @@ on: [push]
 
 jobs:
   build:
-
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+          registry-url: 'https://npm.pkg.github.com'
+      - name: Install
+        run: npm ci
+      - name: Build
+        run: npm run build
+  test:
     runs-on: ubuntu-latest
     services:
       elasticsearch:
@@ -20,6 +31,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '10.x'
+          registry-url: 'https://npm.pkg.github.com'
       - name: Install
         run: npm ci
       - name: Test
