@@ -12,7 +12,7 @@ jobs:
         ports:
           - 9200:9200
         env:
-          - discovery.type=single-node
+          "discovery.type": single-node
     env:
       ELASTICSEARCH_URI: http://localhost:9200
     steps:
