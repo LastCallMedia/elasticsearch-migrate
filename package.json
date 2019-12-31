@@ -1,5 +1,5 @@
 {
-  "name": "@lastcall/elasticsearch-migrate",
+  "name": "@lastcallmedia/elasticsearch-migrate",
   "version": "1.0.0",
   "description": "Migration framework for NodeJS/Elasticsearch.",
   "main": "index.js",
