@@ -18,6 +18,8 @@ jobs:
       - name: Build
         run: npm run build
       - name: Publish
-        run: npm version --no-git-tag-version ${GITHUB_REF#"refs/tags/"}
+        run: |
+          npm version --no-git-tag-version ${GITHUB_REF#"refs/tags/"}
+          npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
