@@ -7,7 +7,7 @@
     "node": ">=8"
   },
   "bin": {
-    "elasticsearch-migrate": "dist/cli.js"
+    "elasticsearch-migrate": "bin/elasticsearch-migrate"
   },
   "scripts": {
     "build": "tsc",
