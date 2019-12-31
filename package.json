@@ -22,6 +22,10 @@
   "bugs": {
     "url": "https://github.com/LastCallMedia/elasticsearch-migrate/issues"
   },
+  "repository" : {
+    "type" : "git",
+    "url": "ssh://git@github.com/LastCallMedia/elasticsearch-migrate.git"
+  },
   "homepage": "https://github.com/LastCallMedia/elasticsearch-migrate#readme",
   "license": "MIT",
   "dependencies": {
