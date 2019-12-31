@@ -12,15 +12,23 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 10
-          registry-url: https://npm.pkg.github.com
-          scope: "@lastcallmedia"
       - name: Install
         run: npm ci
-      - name: Build
-        run: npm run build
-      - name: Publish
+      - name: Build and Set Version
         run: |
+          npm run build
           npm version --no-git-tag-version ${GITHUB_REF#"refs/tags/"}
-          npm publish
+      - name: Publish to NPM
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+      # Setup to publish to Github Package Registry.
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 10
+          registry-url: https://npm.pkg.github.com
+          scope: "@lastcallmedia"
+      - name: Publish to Github Package Registry
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
