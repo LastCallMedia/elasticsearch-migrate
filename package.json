@@ -1,15 +1,33 @@
 {
   "name": "@lastcall/elasticsearch-migrate",
   "version": "1.0.0",
-  "description": "",
+  "description": "Migration framework for NodeJS/Elasticsearch.",
   "main": "index.js",
+  "engines": {
+    "node": ">=8"
+  },
+  "bin": {
+    "elasticsearch-migrate": "dist/cli.js"
+  },
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc -w",
     "test": "jest"
   },
-  "author": "",
-  "license": "ISC",
+  "author": {
+    "name": "Rob Bayliss",
+    "email": "rob@lastcallmedia.com",
+    "url": "https://lastcallmedia.com"
+  },
+  "bugs": {
+    "url": "https://github.com/LastCallMedia/elasticsearch-migrate/issues"
+  },
+  "homepage": "https://github.com/LastCallMedia/elasticsearch-migrate#readme",
+  "license": "MIT",
+  "dependencies": {
+    "glob": "^7.1.6",
+    "yargs": "^15.0.2"
+  },
   "devDependencies": {
     "@elastic/elasticsearch": "^7.5.0",
     "@types/glob": "^7.1.1",
@@ -27,9 +45,5 @@
     "roots": [
       "<rootDir>/src"
     ]
-  },
-  "dependencies": {
-    "glob": "^7.1.6",
-    "yargs": "^15.0.2"
   }
 }
