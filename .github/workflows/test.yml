@@ -5,16 +5,17 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    name: "Build"
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
           node-version: '10.x'
-          registry-url: 'https://npm.pkg.github.com'
       - name: Install
         run: npm ci
       - name: Build
         run: npm run build
+
   test:
     runs-on: ubuntu-latest
     services:
@@ -24,14 +25,17 @@ jobs:
           - 9200:9200
         env:
           "discovery.type": single-node
+    strategy:
+      matrix:
+        node: ["10", "12"]
+    name: "Test on Node ${{ matrix.node }}"
     env:
       ELASTICSEARCH_URI: http://localhost:9200
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
-          node-version: '10.x'
-          registry-url: 'https://npm.pkg.github.com'
+          node-version: ${{ matrix.node }}
       - name: Install
         run: npm ci
       - name: Test
