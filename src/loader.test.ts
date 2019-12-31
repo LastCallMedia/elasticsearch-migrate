@@ -15,18 +15,18 @@ describe('Loader', function() {
     it('Should resolve an OK migration', async function() {
         const loader = new Loader(fixtures, 'ok1.js');
         await expect(loader.load()).resolves.toEqual([
-            expect.objectContaining({title: 'OK1'})
+            expect.objectContaining({title: 'ok1'})
         ]);
     });
     it('Should sort migrations by title', async function() {
         const loader = new Loader(fixtures, ['ok2.js', 'ok1.js']);
         await expect(loader.load()).resolves.toEqual([
-            expect.objectContaining({title: 'OK1'}),
-            expect.objectContaining({title: 'OK2'})
+            expect.objectContaining({title: 'ok1'}),
+            expect.objectContaining({title: 'ok2'})
         ]);
     });
     it('Should require a unique name for each migration', async function() {
-        const loader = new Loader(fixtures, ['ok1.js', 'dup-ok1.js']);
-        await expect(loader.load()).rejects.toThrowError('Duplicate migration detected: OK1');
-    })
+        const loader = new Loader(fixtures, ['ok1.js', 'duplicate/ok1.js']);
+        await expect(loader.load()).rejects.toThrowError('Duplicate migration detected: ok1');
+    });
 })
