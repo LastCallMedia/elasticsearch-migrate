@@ -17,7 +17,11 @@ export function getClient(argv: Configuration) {
             return new Client({node: argv.elasticsearch});
         }
         else {
-            return require(join(argv.root, argv.elasticsearch))
+            let client = require(join(argv.root, argv.elasticsearch))
+            if(!client) {
+                throw new Error(`Unable to load client from ${argv.elasticsearch}. Did you mean to export a client object?`)
+            }
+            return 'default' in client ? client.default : client
         }
     }
     return new Client(argv.elasticsearch);
