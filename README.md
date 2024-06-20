@@ -1,7 +1,7 @@
 Elasticsearch Migrate
 =====================
 
-This is a schema migration framework for Elasticsearch (7+).
+Elasticsearch Migrate is brought to you by your friends at [Last Call Media](https://www.lastcallmedia.com), this is a schema migration framework for Elasticsearch (7+).
 
 To use it:
 1. `npm install @lastcall/elasticsearch-migrate`
